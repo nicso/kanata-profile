@@ -1,0 +1,73 @@
+(defcfg
+    process-unmapped-keys yes
+    windows-altgr cancel-lctl-press
+)
+(defvar
+    tap-time 200
+    hold-time 200
+)
+
+(defsrc
+  1    2    3    4    5    6    7    8    9    0   /   =   bspc
+  q    c    o    p    w    j    m    d         y
+  a    s    e    n    f    l    r    t    i    u
+  z    x    -    v    b    .    h    g    ,    k
+            lalt          spc             ralt
+)
+
+(deflayer base
+  1    2    3    4    5    6    7    8    9    0   /   =   bspc
+  q    c    o    p    w    j    m    d         y
+  @a-nav    @s-mod    @e-mod    @n-mod    f    l    @r-mod    @t-mod    @i-mod    @u-nav
+  z    x    -    v    b    .    h    g    ,    k
+            @alt          spc             @sym
+)
+
+(defalias
+    n-mod (tap-hold-press $tap-time $hold-time n lctl)
+    e-mod (tap-hold-press $tap-time $hold-time e lsft)
+    s-mod (tap-hold-press $tap-time $hold-time s lalt)
+    a-nav (tap-hold-press $tap-time $hold-time a (layer-while-held nav-right))
+    r-mod (tap-hold-press $tap-time $hold-time r lctl)
+    t-mod (tap-hold-press $tap-time $hold-time t lsft)
+    i-mod (tap-hold-press $tap-time $hold-time i lalt)
+    u-nav (tap-hold-press $tap-time $hold-time u (layer-while-held nav-left))
+
+    alt (tap-hold-press $tap-time $hold-time bspc lsft)
+    sym (tap-hold-press $tap-time $hold-time ret _)
+)
+
+(deflayermap (nav-left)
+    s left
+    n rght
+    o up
+    e down
+    c home
+    p end
+    a bspc
+    l ret
+    - C-c
+    x C-v
+)
+
+(deflayermap (nav-right)
+    r lft
+    i rght
+    d up
+    t down
+    m home
+    ; end
+    u bspc
+    f ret
+    h C-c
+    g C-v
+)
+
+
+(deflayer symbols
+  AG-1 AG-2 AG-3 AG-4 AG-5  XX  AG-6 AG-7 AG-8 AG-9 AG-0
+  AG-q AG-w AG-e AG-r AG-t      AG-y AG-u AG-i AG-o AG-p
+  AG-a AG-s AG-d AG-f AG-g      AG-h AG-j AG-k AG-l AG-;
+  AG-z AG-x AG-c AG-v AG-b AG-< AG-n AG-m AG-, AG-. AG-/
+            _             AG-spc          _
+)
