@@ -17,25 +17,43 @@
 )
 (deflayer base
   1    2    3    4    5    6    7    8    9    0   -   =   bspc
-  q    w    e    r    t    y    u    i         p
+  q    w    e    @p-mod t    y    u    i         p
   @a-nav @s-mod @e-mod @n-mod g    h    @r-mod @t-mod @i-mod @u-nav
   z    x    c    v    b    n    m    ,    .    /
             @alt          @spc            @sym
 )
 
 (defalias
-    n-mod (tap-hold-press $tap-time $hold-time f lctl)
-    e-mod (tap-hold-press $tap-time $hold-time d lalt)
-    s-mod (tap-hold-press $tap-time $hold-time s lsft)
-    a-nav (tap-hold-press $tap-time $hold-time a (layer-while-held nav-right))
-    r-mod (tap-hold-press $tap-time $hold-time j lctl)
-    t-mod (tap-hold-press $tap-time $hold-time k lalt)
-    i-mod (tap-hold-press $tap-time $hold-time l lsft)
-    u-nav (tap-hold-press $tap-time $hold-time ; (layer-while-held nav-left))
+    n-mod (tap-hold $tap-time $hold-time f lctl)
+    e-mod (tap-hold $tap-time $hold-time d lalt)
+    s-mod (tap-hold $tap-time $hold-time s lsft)
+    a-nav (tap-hold $tap-time $hold-time a (layer-while-held nav-right))
+    r-mod (tap-hold $tap-time $hold-time j lctl)
+    t-mod (tap-hold $tap-time $hold-time k lalt)
+    i-mod (tap-hold $tap-time $hold-time l lsft)
+    u-nav (tap-hold $tap-time $hold-time ; (layer-while-held nav-left))
+    p-mod (tap-hold $tap-time $hold-time r (layer-while-held nums))
 
     alt (tap-hold-press $tap-time $hold-time bspc lsft)
     sym (tap-hold-press $tap-time $hold-time ret _)
     spc (tap-hold-press $tap-time $hold-time spc (layer-while-held nav-right))
+)
+
+(deflayermap (nums)
+  m 1
+  , 2
+  . 3
+  / 0
+  j 4
+  k 5
+  l 6
+  u 7
+  i 8
+  o 9
+  h kp+
+  y kp-
+  ; kp*
+  p kp/
 )
 
 (deflayermap (nav-left)
@@ -59,6 +77,7 @@
     u home
     o end
     h esc
+    p S-f10
 )
 
 
