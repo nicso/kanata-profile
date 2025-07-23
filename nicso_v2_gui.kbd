@@ -10,15 +10,15 @@
 
 (defsrc
   1    2    3    4    5    6    7    8    9    0   -   =   bspc
-  q    w    e    r    t    y    u    i         p
-  a    s    d    f    g    h    j    k    l    ;
+  tab  q    w    e    r    t    y    u    i         p
+  caps a    s    d    f    g    h    j    k    l    ;
   z    x    c    v    b    n    m    ,    .    /
             lalt          spc             ralt
 )
 (deflayer base
   1    2    3    4    5    6    7    8    9    0   -   =   bspc
-  q    w    e    @p-mod t    y    u    i         p
-  @a-nav @s-mod @e-mod @n-mod g    h    @r-mod @t-mod @i-mod @u-nav
+  caps q    w    @o-mod @p-mod t    y    u    i         p
+  tab  @a-nav @s-mod @e-mod @n-mod g    h    @r-mod @t-mod @i-mod @u-nav
   z    x    c    v    b    n    m    ,    .    /
             @alt          @spc            @sym
 )
@@ -33,6 +33,7 @@
     i-mod (tap-hold $tap-time $hold-time l lsft)
     u-nav (tap-hold $tap-time $hold-time ; (layer-while-held nav-left))
     p-mod (tap-hold $tap-time $hold-time r (layer-while-held nums))
+    o-mod (tap-hold $tap-time $hold-time e (layer-while-held mouse))
 
     alt (tap-hold-press $tap-time $hold-time bspc lsft)
     sym (tap-hold-press $tap-time $hold-time ret _)
@@ -80,11 +81,20 @@
     p S-f10
 )
 
+(deflayermap (mouse)
+	u C-pgup
+	o C-pgdn
+	j (movemouse-left 5 5)
+	l (movemouse-right 5 5)
+	i (movemouse-up 5 5)
+	k (movemouse-down 5 5)
+	spc mlft
+)
 
 (deflayer symbols
   AG-1 AG-2 AG-3 AG-4 AG-5 XX   AG-6 AG-7 AG-8 AG-9 AG-0 AG-q AG-w
-  AG-e AG-r AG-t AG-y AG-u AG-i AG-o AG-p      AG-a
-  AG-s AG-d AG-f AG-g AG-h AG-j AG-k AG-l AG-; AG-z
+  _    AG-e AG-r AG-t AG-y AG-u AG-i AG-o AG-p      AG-a
+  _    AG-s AG-d AG-f AG-g AG-h AG-j AG-k AG-l AG-; AG-z
   AG-x AG-c AG-v AG-b AG-< AG-n AG-m AG-, AG-. AG-/
             _             AG-spc          _
 )
