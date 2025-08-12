@@ -36,7 +36,7 @@
     o-mod (tap-hold $tap-time $hold-time e (layer-while-held mouse))
 
     alt (tap-hold-press $tap-time $hold-time bspc lsft)
-    sym (tap-hold-press $tap-time $hold-time ret _)
+    sym (tap-hold-press $tap-time $hold-time del _)
     spc (tap-hold-press $tap-time $hold-time spc (layer-while-held nav-right))
 )
 
@@ -79,6 +79,7 @@
     o end
     h esc
     p S-f10
+    spc enter
 )
 
 (deflayermap (mouse)
