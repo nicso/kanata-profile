@@ -1,0 +1,38 @@
+;;
+;; Profil QWERTY pour claviers non-Wacom
+;; Remapping calculé pour produire du QWERTY sous un layout Niri configuré en Ergol.
+;;
+;; Logique : pour chaque touche physique QWERTY, kanata envoie la touche
+;; qui, interprétée par XKB Ergol, produit le bon caractère QWERTY.
+;;
+;; Exemples :
+;;   QWERTY w → envoie t → Ergol(t) = w ✓
+;;   QWERTY h → envoie m → Ergol(m) = h ✓
+;;   QWERTY - → envoie c → Ergol(c) = - ✓
+;;
+
+(defcfg
+    process-unmapped-keys yes
+    linux-dev-names-include "Wireless Air mouse Keyboard:ZhenYe Tech BLE Remote Keyboard"
+)
+
+(defalias
+    ;; Ergol n'a pas de ; en accès direct : Shift+. (AB09) = ;
+    scln S-.
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt          spc             ralt rctl
+)
+
+(deflayer base
+  grv  1    2    3    4    5    6    7    8    9    0    c    =    bspc
+  tab  q    t    d    j    k    p    ;    l    e    r    [    ]    \
+  caps a    s    i    g    ,    m    y    /    h    @scln '   ret
+  lsft z    x    w    v    b    f    u    .    n    -    rsft
+  lctl lmet lalt          spc             ralt rctl
+)

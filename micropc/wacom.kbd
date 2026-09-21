@@ -1,6 +1,7 @@
 (defcfg
     process-unmapped-keys yes
     windows-altgr cancel-lctl-press
+    linux-dev-names-include "Wacom Bluetooth Keyboard"
 )
 (defvar
     tap-time 180
@@ -14,6 +15,7 @@
   caps a    s    d    f    g    h    j    k    l    ;
   z    x    c    v    b    n    m    ,    .    /
             lalt          spc             ralt
+  pgdn pgup mail volu vold comp
 )
 (deflayer base
   1    2    3    4    5    6    7    8    9    0   -   =   bspc
@@ -21,23 +23,28 @@
   tab  @a-nav @s-mod @e-mod @n-mod g    h    @r-mod @t-mod @i-mod @u-nav
   z    x    c    v    b    n    m    ,    .    /
             @alt          @spc            @sym
+  down up A-left volu vold @comp-mod
 )
 
 (defalias
-    n-mod (tap-hold $tap-time $hold-time f lctl)
-    e-mod (tap-hold $tap-time $hold-time d lalt)
-    s-mod (tap-hold $tap-time $hold-time s lsft)
-    a-nav (tap-hold $tap-time $hold-time a (layer-while-held nav-right))
-    r-mod (tap-hold $tap-time $hold-time j lctl)
-    t-mod (tap-hold $tap-time $hold-time k lalt)
-    i-mod (tap-hold $tap-time $hold-time l lsft)
-    u-nav (tap-hold $tap-time $hold-time ; (layer-while-held nav-left))
-    p-mod (tap-hold $tap-time $hold-time r (layer-while-held nums))
-    o-mod (tap-hold $tap-time $hold-time e (layer-while-held mouse))
+    n-mod (tap-hold-release $tap-time 3000 f lctl)
+    e-mod (tap-hold-release $tap-time 3000 d lalt)
+    s-mod (tap-hold-release $tap-time 3000 s lsft)
+    a-nav (tap-hold-release $tap-time 3000 a (layer-while-held nav-right))
+    r-mod (tap-hold-release $tap-time 3000 j lctl)
+    t-mod (tap-hold-release $tap-time 3000 k lalt)
+    i-mod (tap-hold-release $tap-time 3000 l lsft)
+    u-nav (tap-hold-release $tap-time 3000 ; (layer-while-held nav-left))
+    p-mod (tap-hold-release $tap-time 3000 r (layer-while-held nums))
+    o-mod (tap-hold-release $tap-time 3000 e (layer-while-held mouse))
 
     alt (tap-hold-press $tap-time $hold-time bspc lsft)
     sym (tap-hold-press $tap-time $hold-time del _)
-    spc (tap-hold-press $tap-time $hold-time spc (layer-while-held nav-right))
+    spc (tap-hold-release $tap-time 3000 spc (layer-while-held niri-nav))
+    niri-left  M-r
+    niri-right M-i
+    comp-mod (tap-hold-release $tap-time 3000 mwd (layer-while-held compose-nav))
+    mouse-slow (layer-while-held mouse-slow)
 )
 
 (deflayermap (nums)
@@ -55,6 +62,8 @@
   y kp-
   ; kp*
   p kp/
+  volu mwu
+  vold mwd
 )
 
 (deflayermap (nav-left)
@@ -82,13 +91,35 @@
     spc enter
 )
 
+(deflayermap (niri-nav)
+    r @niri-left
+    i @niri-right
+    volu mwu
+    vold mwd
+)
+
+(deflayermap (compose-nav)
+    mail mwu
+)
+
 (deflayermap (mouse)
 	u C-pgup
 	o C-pgdn
-	j (movemouse-left 5 5)
-	l (movemouse-right 5 5)
-	i (movemouse-up 5 5)
-	k (movemouse-down 5 5)
+	j (movemouse-left 4 3)
+	l (movemouse-right 4 3)
+	i (movemouse-up 4 3)
+	k (movemouse-down 4 3)
+	spc mlft
+	w @mouse-slow
+	m mwd
+	, mwu
+)
+
+(deflayermap (mouse-slow)
+	j (movemouse-left 5 1)
+	l (movemouse-right 5 1)
+	i (movemouse-up 5 1)
+	k (movemouse-down 5 1)
 	spc mlft
 )
 
@@ -98,4 +129,5 @@
   _    AG-s AG-d AG-f AG-g AG-h AG-j AG-k AG-l AG-; AG-z
   AG-x AG-c AG-v AG-b AG-< AG-n AG-m AG-, AG-. AG-/
             _             AG-spc          _
+  _ _ _ _ _ _
 )

@@ -1,0 +1,25 @@
+;; Alias : actions et tap-hold utilisés dans deflayer base (voir nicso_v2_gui.kbd).
+(defalias
+    n-mod (tap-hold-release $tap-time 3000 f lctl)
+    e-mod (tap-hold-release $tap-time 3000 d lalt)
+    s-mod (tap-hold-release $tap-time 3000 s lsft)
+    a-nav (tap-hold-release $tap-time 3000 a (layer-while-held nav-right))
+    r-mod (tap-hold-release $tap-time 3000 j lctl)
+    t-mod (tap-hold-release $tap-time 3000 k lalt)
+    i-mod (tap-hold-release $tap-time 3000 l lsft)
+    u-nav (tap-hold-release $tap-time 3000 ; (layer-while-held nav-left))
+    p-mod (tap-hold-release $tap-time 3000 r (layer-while-held nums))
+    o-mod (tap-hold-release $tap-time 3000 e (layer-while-held mouse))
+
+    alt (tap-hold-press $tap-time $hold-time bspc lalt)
+    sym (tap-hold-press $tap-time $hold-time del _)
+    spc (tap-hold-release $tap-time 3000 spc (layer-while-held niri-nav))
+    niri-left  M-r
+    niri-right M-i
+    comp-mod (tap-hold-release $tap-time 3000 mwd (layer-while-held compose-nav))
+    mouse-slow (layer-while-held mouse-slow)
+    g-mod (tap-hold-release $tap-time 3000 g lmet)
+
+    pause-on  (fork bspc (layer-switch passthrough) (lsft rsft))
+    pause-off (fork bspc (layer-switch base)        (lsft rsft))
+)

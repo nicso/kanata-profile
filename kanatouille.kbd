@@ -1,0 +1,38 @@
+(defcfg
+    process-unmapped-keys yes
+    windows-altgr cancel-lctl-press
+)
+(defvar
+    tap-time 180
+    hold-time 180
+)
+
+
+(defsrc
+  1    2    3    4    5    6    7    8    9    0   -   =   bspc
+  tab  q    w    e    r    t    y    u    i         p
+  caps a    s    d    f    g    h    j    k    l    ;
+  z    x    c    v    b    n    m    ,    .    /
+            lalt          spc             ralt rctl
+  pgdn pgup mail volu vold comp
+)
+(deflayer base
+  1    2    3    4    5    6    7    8    9    0   -   =   @pause-on
+  caps q    w    @o-mod @p-mod t    y    u    i         p
+  tab  @a-nav @s-mod @e-mod @n-mod @g-mod h    @r-mod @t-mod @i-mod @u-nav
+  z    x    c    v    b    n    m    ,    .    /
+            @alt          @spc            @sym lmet
+  down up A-left volu vold @comp-mod
+)
+
+(include aliases.kbd)
+(include layers.kbd)
+
+(deflayer symbols
+  AG-1 AG-2 AG-3 AG-4 AG-5 XX   AG-6 AG-7 AG-8 AG-9 AG-0 AG-q AG-w
+  _    AG-e AG-r AG-t AG-y AG-u AG-i AG-o AG-p      AG-a
+  _    AG-s AG-d AG-f AG-g AG-h AG-j AG-k AG-l AG-; AG-z
+  AG-x AG-c AG-v AG-b AG-< AG-n AG-m AG-, AG-. AG-/
+            _             AG-spc          _ _
+  _ _ _ _ _ _
+)

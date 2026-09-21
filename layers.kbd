@@ -1,0 +1,81 @@
+;; Layers activées via layer-while-held/layer-switch depuis les alias (voir aliases.kbd).
+
+(deflayermap (nums)
+  m 1
+  , 2
+  . 3
+  / 0
+  j 4
+  k 5
+  l 6
+  u 7
+  i 8
+  o 9
+  h kp+
+  y kp-
+  ; kp*
+  p kp/
+  volu mwu
+  vold mwd
+)
+
+(deflayermap (nav-left)
+    s left
+    f rght
+    e up
+    d down
+    z home
+    r end
+    q bspc
+    h esc
+    - C-c
+    x C-v
+)
+
+(deflayermap (nav-right)
+    j lft
+    l rght
+    i up
+    k down
+    u home
+    o end
+    h esc
+    p S-f10
+    spc enter
+)
+
+(deflayermap (niri-nav)
+    r @niri-left
+    i @niri-right
+    volu mwu
+    vold mwd
+)
+
+(deflayermap (compose-nav)
+    mail mwu
+)
+
+(deflayermap (mouse)
+	u C-pgup
+	o C-pgdn
+	j (movemouse-left 4 3)
+	l (movemouse-right 4 3)
+	i (movemouse-up 4 3)
+	k (movemouse-down 4 3)
+	spc mlft
+	w @mouse-slow
+	m mwd
+	, mwu
+)
+
+(deflayermap (mouse-slow)
+	j (movemouse-left 5 1)
+	l (movemouse-right 5 1)
+	i (movemouse-up 5 1)
+	k (movemouse-down 5 1)
+	spc mlft
+)
+
+(deflayermap (passthrough)
+  bspc @pause-off
+)
